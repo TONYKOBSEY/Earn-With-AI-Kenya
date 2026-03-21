@@ -1,0 +1,70 @@
+:root {
+  --bg0: #050b08;
+  --bg1: #07130f;
+  --surface0: rgba(13, 26, 20, 0.78);
+  --surface1: rgba(13, 26, 20, 0.92);
+  --stroke: rgba(214, 168, 74, 0.22);
+
+  --text0: rgba(246, 245, 242, 0.92);
+  --text1: rgba(246, 245, 242, 0.74);
+  --muted: rgba(246, 245, 242, 0.58);
+
+  --gold0: #d6a84a;
+  --gold1: #f2c86b;
+  --emerald0: #0b3d2e;
+  --emerald1: #0f5b42;
+
+  --shadow0: 0 18px 50px rgba(0, 0, 0, 0.55);
+  --shadow1: 0 10px 22px rgba(0, 0, 0, 0.38);
+
+  --radius-lg: 22px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+
+  --sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: ui-monospace, Consolas, "SFMono-Regular", Menlo, monospace;
+
+  color-scheme: dark;
+  font: 16px/150% var(--sans);
+  letter-spacing: 0.2px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: radial-gradient(1200px 600px at 20% -10%, rgba(15, 91, 66, 0.35), transparent 60%),
+    radial-gradient(900px 700px at 90% 10%, rgba(214, 168, 74, 0.18), transparent 55%),
+    radial-gradient(900px 900px at 50% 110%, rgba(11, 61, 46, 0.35), transparent 60%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text1);
+  background: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(214, 168, 74, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+

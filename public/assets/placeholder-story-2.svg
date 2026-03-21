@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d6a84a" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#0f5b42" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="#050b08"/>
+  <rect x="40" y="40" width="1120" height="720" rx="28" fill="url(#g)" stroke="#d6a84a" stroke-opacity="0.25" stroke-width="2"/>
+  <g fill="none" stroke="#f2c86b" stroke-opacity="0.45" stroke-width="2">
+    <circle cx="310" cy="520" r="52"/>
+    <circle cx="600" cy="420" r="72" stroke-opacity="0.28"/>
+    <circle cx="890" cy="520" r="52"/>
+    <path d="M362 520 H528 M672 420 H838" />
+  </g>
+  <g font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" text-anchor="middle">
+    <text x="600" y="360" font-size="44" fill="#f6f5f2" fill-opacity="0.92" font-weight="800">IMAGE PLACEHOLDER</text>
+    <text x="600" y="410" font-size="22" fill="#f6f5f2" fill-opacity="0.68">Story block image #2 (1200×800)</text>
+    <text x="600" y="452" font-size="18" fill="#f6f5f2" fill-opacity="0.56">Replace: public/assets/placeholder-story-2.svg</text>
+  </g>
+</svg>

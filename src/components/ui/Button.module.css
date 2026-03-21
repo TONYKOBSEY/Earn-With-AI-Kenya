@@ -1,0 +1,39 @@
+.base {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border-width: 1px;
+  border-style: solid;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.primary {
+  border-color: rgba(214, 168, 74, 0.35);
+  background: linear-gradient(180deg, rgba(214, 168, 74, 0.22), rgba(214, 168, 74, 0.08));
+  color: rgba(246, 245, 242, 0.92);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.secondary {
+  border-color: rgba(214, 168, 74, 0.16);
+  background: rgba(13, 26, 20, 0.45);
+  color: rgba(246, 245, 242, 0.8);
+}
+
+.danger {
+  border-color: rgba(255, 92, 92, 0.35);
+  background: rgba(255, 92, 92, 0.08);
+  color: rgba(246, 245, 242, 0.9);
+}
+
+.ghost {
+  border-color: transparent;
+  background: rgba(13, 26, 20, 0.35);
+  color: var(--text0);
+}
+

@@ -1,0 +1,179 @@
+.shell {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: linear-gradient(180deg, rgba(5, 11, 8, 0.96), rgba(5, 11, 8, 0.88));
+  border-bottom: 1px solid rgba(214, 168, 74, 0.14);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brandText {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.brandTitle {
+  color: var(--text0);
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brandTag {
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brandMark {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  flex: none;
+}
+
+.orb {
+  position: absolute;
+  inset: 6px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, rgba(242, 200, 107, 0.95), rgba(214, 168, 74, 0.3) 55%, rgba(11, 61, 46, 0.1));
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(214, 168, 74, 0.35);
+  box-shadow: inset 0 0 0 1px rgba(15, 91, 66, 0.25);
+  transform: rotate(18deg);
+}
+
+.nav {
+  display: flex;
+  gap: 6px;
+}
+
+.navLink {
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  color: var(--text1);
+  background: rgba(13, 26, 20, 0.25);
+}
+
+.navLink:hover {
+  border-color: rgba(214, 168, 74, 0.22);
+  background: rgba(13, 26, 20, 0.45);
+}
+
+.navActive {
+  color: var(--text0);
+  border-color: rgba(214, 168, 74, 0.32);
+  background: rgba(13, 26, 20, 0.62);
+}
+
+.cartNavLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.badge {
+  min-width: 22px;
+  height: 18px;
+  padding: 0 6px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+  color: rgba(5, 11, 8, 0.92);
+  background: radial-gradient(circle at 30% 30%, rgba(242, 200, 107, 0.96), rgba(214, 168, 74, 0.76));
+  border: 1px solid rgba(214, 168, 74, 0.35);
+}
+
+.content {
+  flex: 1;
+  padding: 24px 0 44px;
+}
+
+.cartPeek {
+  display: none;
+  cursor: pointer;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(214, 168, 74, 0.22);
+  background: rgba(13, 26, 20, 0.55);
+  color: var(--text0);
+  font-weight: 800;
+}
+
+.footer {
+  border-top: 1px solid rgba(214, 168, 74, 0.14);
+  background: rgba(5, 11, 8, 0.88);
+}
+
+.footerInner {
+  padding: 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footerLine {
+  color: var(--text1);
+  font-size: 13px;
+}
+
+.footerLineMuted {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 520px) {
+  .brandTag {
+    display: none;
+  }
+  .navLink {
+    padding: 9px 10px;
+  }
+}
+
+@media (max-width: 430px) {
+  .nav {
+    display: none;
+  }
+  .cartPeek {
+    display: inline-flex;
+  }
+}
+

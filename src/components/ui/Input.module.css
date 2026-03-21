@@ -1,0 +1,14 @@
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(214, 168, 74, 0.18);
+  background: rgba(5, 11, 8, 0.55);
+  color: var(--text0);
+}
+
+.textarea {
+  composes: input;
+  resize: vertical;
+}
+

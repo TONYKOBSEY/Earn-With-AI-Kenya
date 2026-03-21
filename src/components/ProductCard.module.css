@@ -1,0 +1,70 @@
+.card {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  display: grid;
+  grid-template-rows: 170px 1fr;
+  background: rgba(13, 26, 20, 0.55);
+}
+
+.media {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(214, 168, 74, 0.14);
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.body {
+  padding: 16px 16px 14px;
+  display: grid;
+  gap: 12px;
+}
+
+.top {
+  display: grid;
+  gap: 6px;
+}
+
+.title {
+  color: var(--text0);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.1;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.price {
+  color: rgba(242, 200, 107, 0.92);
+  font-weight: 700;
+}
+
+.add {
+  cursor: pointer;
+  border: 1px solid rgba(214, 168, 74, 0.3);
+  background: linear-gradient(180deg, rgba(214, 168, 74, 0.22), rgba(214, 168, 74, 0.05));
+  color: var(--text0);
+  padding: 10px 12px;
+  border-radius: 999px;
+}
+
+.add:hover {
+  border-color: rgba(242, 200, 107, 0.45);
+}
+

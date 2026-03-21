@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f5b42" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#d6a84a" stop-opacity="0.22"/>
+    </linearGradient>
+    <pattern id="p" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#d6a84a" fill-opacity="0.22"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="#050b08"/>
+  <rect x="40" y="40" width="1120" height="720" rx="28" fill="url(#g)" stroke="#d6a84a" stroke-opacity="0.25" stroke-width="2"/>
+  <rect x="40" y="40" width="1120" height="720" rx="28" fill="url(#p)" opacity="0.6"/>
+  <g fill="none" stroke="#f2c86b" stroke-opacity="0.55" stroke-width="2">
+    <path d="M120 560 C260 420, 420 660, 560 520 S860 440, 1080 560"/>
+    <path d="M120 600 C260 460, 420 700, 560 560 S860 480, 1080 600" stroke-opacity="0.35"/>
+  </g>
+  <g font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" text-anchor="middle">
+    <text x="600" y="360" font-size="44" fill="#f6f5f2" fill-opacity="0.92" font-weight="800">IMAGE PLACEHOLDER</text>
+    <text x="600" y="410" font-size="22" fill="#f6f5f2" fill-opacity="0.68">Problem section visual (1200×800)</text>
+    <text x="600" y="452" font-size="18" fill="#f6f5f2" fill-opacity="0.56">Replace this file: public/assets/placeholder-problem.svg</text>
+  </g>
+</svg>

@@ -1,0 +1,61 @@
+/* App layout primitives (theme tokens live in styles/theme.css) */
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.glass {
+  background: var(--surface0);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow1);
+}
+
+.h1 {
+  font-size: clamp(34px, 5.2vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -1px;
+  color: var(--text0);
+  margin: 0;
+}
+
+.h2 {
+  font-size: clamp(22px, 3.3vw, 28px);
+  line-height: 1.15;
+  color: var(--text0);
+  margin: 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.focusRing:focus-visible {
+  outline: 2px solid rgba(242, 200, 107, 0.9);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.adminTab,
+.adminTabActive {
+  font-size: 13px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(214, 168, 74, 0.16);
+  background: rgba(13, 26, 20, 0.35);
+  color: var(--text1);
+}
+
+.adminTabActive {
+  border-color: rgba(214, 168, 74, 0.32);
+  background: rgba(13, 26, 20, 0.62);
+  color: var(--text0);
+}
