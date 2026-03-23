@@ -50,28 +50,16 @@
   text-overflow: ellipsis;
 }
 
-.brandMark {
-  position: relative;
-  width: 38px;
-  height: 38px;
+.logo {
+  width: 120px;
+  height: 120px;
   flex: none;
+  object-fit: contain;
+  min-width: 120px;
 }
 
-.orb {
-  position: absolute;
-  inset: 6px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 30%, rgba(242, 200, 107, 0.95), rgba(214, 168, 74, 0.3) 55%, rgba(11, 61, 46, 0.1));
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-}
-
-.ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 999px;
-  border: 1px solid rgba(214, 168, 74, 0.35);
-  box-shadow: inset 0 0 0 1px rgba(15, 91, 66, 0.25);
-  transform: rotate(18deg);
+.brandText {
+  font-size: 0.95rem;
 }
 
 .nav {

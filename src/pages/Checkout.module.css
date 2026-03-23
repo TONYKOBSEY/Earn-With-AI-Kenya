@@ -4,9 +4,21 @@
   gap: 10px;
 }
 
+.actionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 @media (max-width: 720px) {
   .grid2 {
     grid-template-columns: 1fr;
+  }
+
+  .actionRow {
+    justify-content: flex-start;
   }
 }
 

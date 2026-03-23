@@ -47,6 +47,50 @@ const checks = [
       )
     },
   ],
+  [
+    'payment CTAs use explicit Google click tracking',
+    () => {
+      const analyticsPath = path.join(repoRoot, 'src', 'lib', 'analytics.ts')
+      const analyticsContent = fs.readFileSync(analyticsPath, 'utf8')
+
+      assert.match(analyticsContent, /'click_payment'/)
+      assert.match(analyticsContent, /event_category:\s*'engagement'/)
+      assert.match(analyticsContent, /event_label:\s*'mpesa_payment'/)
+      assert.match(analyticsContent, /event_callback:/)
+
+      const trackedCtaPaths = [
+        path.join(repoRoot, 'src', 'components', 'ProductCard.tsx'),
+        path.join(repoRoot, 'src', 'pages', 'Product.tsx'),
+        path.join(repoRoot, 'src', 'pages', 'Checkout.tsx'),
+      ]
+
+      trackedCtaPaths.forEach((filePath) => {
+        const content = fs.readFileSync(filePath, 'utf8')
+
+        assert.match(
+          content,
+          /openTrackedPaymentLink\(/,
+          `Expected tracked payment navigation in ${path.relative(repoRoot, filePath)}`,
+        )
+        assert.doesNotMatch(
+          content,
+          /window\.location\.assign\([^)]*paystackPaymentUrl/,
+          `Expected raw Paystack navigation to be removed from ${path.relative(repoRoot, filePath)}`,
+        )
+      })
+    },
+  ],
+  [
+    'Microsoft Clarity is installed in the global head',
+    () => {
+      const indexPath = path.join(repoRoot, 'index.html')
+      const indexContent = fs.readFileSync(indexPath, 'utf8')
+
+      assert.match(indexContent, /https:\/\/www\.clarity\.ms\/tag\/"\s*\+\s*i/)
+      assert.match(indexContent, /"clarity", "script", "w05ek2rtlt"/)
+      assert.match(indexContent, /<head>[\s\S]*<script type="text\/javascript">/)
+    },
+  ],
 ]
 
 let failures = 0

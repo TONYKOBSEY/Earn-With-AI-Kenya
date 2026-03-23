@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { MotionPage } from '../components/MotionPage'
 import { Button } from '../components/ui/Button'
+import { openTrackedPaymentLink } from '../lib/analytics'
 import { formatKes } from '../lib/money'
 import { useCart } from '../state/CartContext'
 import { useProducts } from '../state/useProducts'
@@ -43,12 +44,7 @@ export function Checkout() {
 
   const linkedItems = checkoutItems.filter((item) => item.paystackPaymentUrl)
   const missingLinkItems = checkoutItems.filter((item) => !item.paystackPaymentUrl)
-  const singleLinkedItem =
-    checkoutItems.length === 1 && linkedItems.length === 1 ? linkedItems[0] : undefined
-
-  function openPaymentLink(url: string) {
-    window.location.assign(url)
-  }
+  const singleLinkedItem = linkedItems.length === 1 ? linkedItems[0] : undefined
 
   return (
     <MotionPage>
@@ -117,7 +113,10 @@ export function Checkout() {
 
               {singleLinkedItem ? (
                 <section className="glass" style={{ padding: 18, display: 'grid', gap: 12 }}>
-                  <div style={{ color: 'var(--text0)', fontWeight: 900 }}>Ready for secure checkout</div>
+                  <div style={{ color: 'var(--text0)', fontWeight: 900 }}>Checkout</div>
+                  <p className="muted" style={{ margin: 0, maxWidth: 760 }}>
+                    Click Checkout to continue to the secure Paystack payment page for this ebook.
+                  </p>
                   <div className={styles.grid2}>
                     <div
                       style={{
@@ -151,13 +150,21 @@ export function Checkout() {
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-                    <Button onClick={() => openPaymentLink(singleLinkedItem.paystackPaymentUrl!)}>
-                      Proceed to Paystack
-                    </Button>
-                    <Link to="/cart">
-                      <Button variant="secondary">Back to cart</Button>
+                  <div className={styles.actionRow}>
+                    <Link to="/shop">
+                      <Button variant="secondary">Continue shopping</Button>
                     </Link>
+                    <Button
+                      onClick={() =>
+                        openTrackedPaymentLink(singleLinkedItem.paystackPaymentUrl!, {
+                          productId: singleLinkedItem.productId,
+                          productTitle: singleLinkedItem.title,
+                          source: 'checkout_single',
+                        })
+                      }
+                    >
+                      Checkout
+                    </Button>
                   </div>
                 </section>
               ) : null}
@@ -173,9 +180,15 @@ export function Checkout() {
                     {linkedItems.map((item) => (
                       <Button
                         key={item.productId}
-                        onClick={() => openPaymentLink(item.paystackPaymentUrl!)}
+                        onClick={() =>
+                          openTrackedPaymentLink(item.paystackPaymentUrl!, {
+                            productId: item.productId,
+                            productTitle: item.title,
+                            source: 'checkout_multi',
+                          })
+                        }
                       >
-                        Pay for {item.title}
+                        Checkout {item.title}
                       </Button>
                     ))}
                   </div>

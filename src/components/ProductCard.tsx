@@ -1,12 +1,14 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import type { Product } from '../types'
+import { openTrackedPaymentLink } from '../lib/analytics'
 import { formatKes } from '../lib/money'
 import { useCart } from '../state/CartContext'
 import styles from './ProductCard.module.css'
 
 export function ProductCard(props: { product: Product }) {
   const { add } = useCart()
+  const navigate = useNavigate()
   const p = props.product
   const paystackPaymentUrl = p.paystackPaymentUrl?.trim()
 
@@ -37,19 +39,34 @@ export function ProductCard(props: { product: Product }) {
 
         <div className={styles.bottom}>
           <div className={styles.price}>{formatKes(p.priceKes)}</div>
-          <button
-            className={`${styles.add} focusRing`}
-            type="button"
-            onClick={() => {
-              if (paystackPaymentUrl) {
-                window.location.assign(paystackPaymentUrl)
-                return
-              }
-              add(p, 1)
-            }}
-          >
-            {paystackPaymentUrl ? 'Buy now' : 'Add to cart'}
-          </button>
+          <div className={styles.actions}>
+            <button
+              className={`${styles.buyNow} focusRing`}
+              type="button"
+              disabled={!paystackPaymentUrl}
+              onClick={() => {
+                if (!paystackPaymentUrl) return
+                openTrackedPaymentLink(paystackPaymentUrl, {
+                  productId: p.id,
+                  productTitle: p.title,
+                  source: 'product_card',
+                })
+              }}
+            >
+              Buy now
+            </button>
+
+            <button
+              className={`${styles.checkout} focusRing`}
+              type="button"
+              onClick={() => {
+                add(p, 1)
+                navigate('/checkout')
+              }}
+            >
+              Checkout
+            </button>
+          </div>
         </div>
       </div>
     </motion.article>

@@ -2,12 +2,13 @@ import { Suspense, lazy, type ReactNode } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { AppShell } from './components/AppShell'
+import { RouteTracker } from './components/RouteTracker'
+import { Home } from './pages/Home'
 
 const Cart = lazy(() => import('./pages/Cart').then((module) => ({ default: module.Cart })))
 const Checkout = lazy(() =>
   import('./pages/Checkout').then((module) => ({ default: module.Checkout })),
 )
-const Home = lazy(() => import('./pages/Home').then((module) => ({ default: module.Home })))
 const OrderResult = lazy(() =>
   import('./pages/OrderResult').then((module) => ({ default: module.OrderResult })),
 )
@@ -34,9 +35,9 @@ const AdminSettings = lazy(() =>
 function PageFallback() {
   return (
     <div className="container" style={{ paddingTop: 24, paddingBottom: 44 }}>
-      <section className="glass" style={{ padding: 22 }}>
-        <div className="muted">Loading...</div>
-      </section>
+      <div className="muted" style={{ padding: '6px 2px' }}>
+        Loading...
+      </div>
     </div>
   )
 }
@@ -47,24 +48,27 @@ function withSuspense(node: ReactNode) {
 
 export default function App() {
   return (
-    <Routes>
-      <Route element={<AppShell />}>
-        <Route index element={withSuspense(<Home />)} />
-        <Route path="shop" element={withSuspense(<Shop />)} />
-        <Route path="p/:slug" element={withSuspense(<Product />)} />
-        <Route path="cart" element={withSuspense(<Cart />)} />
-        <Route path="checkout" element={withSuspense(<Checkout />)} />
-        <Route path="order/:orderId" element={withSuspense(<OrderResult />)} />
+    <>
+      <RouteTracker />
+      <Routes>
+        <Route element={<AppShell />}>
+          <Route index element={<Home />} />
+          <Route path="shop" element={withSuspense(<Shop />)} />
+          <Route path="p/:slug" element={withSuspense(<Product />)} />
+          <Route path="cart" element={withSuspense(<Cart />)} />
+          <Route path="checkout" element={withSuspense(<Checkout />)} />
+          <Route path="order/:orderId" element={withSuspense(<OrderResult />)} />
 
-        <Route path="admin" element={withSuspense(<AdminLayout />)}>
-          <Route index element={withSuspense(<AdminDashboard />)} />
-          <Route path="products" element={withSuspense(<AdminProducts />)} />
-          <Route path="orders" element={withSuspense(<AdminOrders />)} />
-          <Route path="settings" element={withSuspense(<AdminSettings />)} />
+          <Route path="admin" element={withSuspense(<AdminLayout />)}>
+            <Route index element={withSuspense(<AdminDashboard />)} />
+            <Route path="products" element={withSuspense(<AdminProducts />)} />
+            <Route path="orders" element={withSuspense(<AdminOrders />)} />
+            <Route path="settings" element={withSuspense(<AdminSettings />)} />
+          </Route>
+
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
-
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </>
   )
 }

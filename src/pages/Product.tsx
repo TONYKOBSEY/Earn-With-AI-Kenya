@@ -7,6 +7,7 @@ import styles from './Product.module.css'
 import { TextInput } from '../components/ui/Input'
 import { Button } from '../components/ui/Button'
 import { Field } from '../components/ui/Field'
+import { openTrackedPaymentLink } from '../lib/analytics'
 import type { Review } from '../types'
 import { seedReviews } from '../mock/seed'
 import { useState } from 'react'
@@ -15,7 +16,8 @@ export function Product() {
   const { slug } = useParams()
   const { bySlug } = useProducts()
   const { add } = useCart()
-  const p = slug ? bySlug.get(slug) : undefined
+  const rawProduct = slug ? bySlug.get(slug) : undefined
+  const p = rawProduct?.status === 'active' ? rawProduct : undefined
   const paystackPaymentUrl = p?.paystackPaymentUrl?.trim()
   const initialReviews = seedReviews.filter((r) => r.productId === p?.id)
   const [reviews] = useState<Review[]>(initialReviews)
@@ -47,19 +49,21 @@ export function Product() {
                 <div
                   className={styles.grid}
                 >
-                  <div className="glass" style={{ padding: 10 }}>
-                    <img
-                      src={p.coverImage}
-                      alt={`${p.title} cover`}
-                      loading="eager"
-                      decoding="async"
-                      width={1024}
-                      height={1536}
-                      style={{ width: '100%', borderRadius: 16, display: 'block' }}
-                    />
+                  <div className={`${styles.coverPanel} glass`}>
+                    <div className={styles.coverFrame}>
+                      <img
+                        className={styles.coverImage}
+                        src={p.coverImage}
+                        alt={`${p.title} cover`}
+                        loading="eager"
+                        decoding="async"
+                        width={768}
+                        height={1152}
+                      />
+                    </div>
                   </div>
 
-                  <div style={{ display: 'grid', gap: 12 }}>
+                  <div className={styles.details}>
                     <div style={{ color: 'var(--text1)' }}>{p.description}</div>
                     <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                       {p.tags.map((t) => (
@@ -94,7 +98,15 @@ export function Product() {
                       </div>
                       <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                         {paystackPaymentUrl ? (
-                          <Button onClick={() => window.location.assign(paystackPaymentUrl)}>
+                          <Button
+                            onClick={() =>
+                              openTrackedPaymentLink(paystackPaymentUrl, {
+                                productId: p.id,
+                                productTitle: p.title,
+                                source: 'product_page',
+                              })
+                            }
+                          >
                             Buy now
                           </Button>
                         ) : null}

@@ -4,15 +4,7 @@ import { useState } from 'react'
 import styles from './AppShell.module.css'
 import { useCart } from '../state/CartContext'
 import { CartDrawer } from './CartDrawer'
-
-function BrandMark() {
-  return (
-    <div className={styles.brandMark} aria-hidden="true">
-      <div className={styles.orb} />
-      <div className={styles.ring} />
-    </div>
-  )
-}
+import logo from '../assets/logo.png'
 
 export function AppShell() {
   const cart = useCart()
@@ -23,7 +15,7 @@ export function AppShell() {
       <header className={styles.header}>
         <div className={`${styles.headerInner} container`}>
           <NavLink to="/" className={`${styles.brand} focusRing`}>
-            <BrandMark />
+            <img src={logo} alt="Earn with AI Kenya" className={styles.logo} />
             <div className={styles.brandText}>
               <div className={styles.brandTitle}>Earn with AI Kenya</div>
               <div className={styles.brandTag}>Afro-futuristic ebooks for real income</div>

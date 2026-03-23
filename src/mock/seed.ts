@@ -69,7 +69,7 @@ export const seedProducts: Product[] = [
     tags: ['Templates', 'Freelancing', 'Quality', 'East Africa'],
     ratingAvg: 4.5,
     ratingCount: 74,
-    status: 'active',
+    status: 'draft',
     updatedAt: new Date('2026-02-10T12:00:00.000Z').toISOString(),
   },
   {
@@ -78,12 +78,13 @@ export const seedProducts: Product[] = [
     title: 'Micro-SaaS with AI (No Backend Edition)',
     subtitle: 'Ship a sellable prototype in a weekend',
     priceKes: 999,
-    paystackPaymentUrl: '',
+    paystackPaymentUrl: 'https://paystack.com/buy/micro-saas-with-ai',
     coverImage: '/assets/cover-optimized.jpg',
+
     previewImage: '/assets/cover-optimized.jpg',
     previewExcerptTitle: 'Preview page',
     previewExcerpt:
-      '"Your first prototype does not need a backend. It needs believable screens, sharp messaging, and one clear use case that makes the demo feel real."',
+      '"Your first prototype does not need  a backend. It needs believable screens, sharp messaging, and one clear use case that makes the demo feel real."',
     previewHighlights: [
       'A weekend build plan with mock data',
       'Landing-page copy patterns that create trust fast',
@@ -104,7 +105,7 @@ export const seedProducts: Product[] = [
     tags: ['MVP', 'SaaS', 'UX', 'Validation'],
     ratingAvg: 4.6,
     ratingCount: 41,
-    status: 'active',
+    status: 'draft',
     updatedAt: new Date('2026-01-15T12:00:00.000Z').toISOString(),
   },
 ]

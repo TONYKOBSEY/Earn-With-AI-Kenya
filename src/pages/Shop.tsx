@@ -38,8 +38,9 @@ export function Shop() {
           <section className="glass" style={{ padding: 22, display: 'grid', gap: 12 }}>
             <h1 className="h1">Shop</h1>
             <p className="muted" style={{ marginTop: 10, maxWidth: 720 }}>
-              Browse practical AI guides built for Kenya. Secure checkout opens on Paystack when a
-              live payment link is connected to the product.
+              Browse practical AI guides built for Kenya. Use Buy now for direct Paystack payment,
+              or choose Checkout to add the product and continue through the Paystack-backed
+              checkout flow.
             </p>
             <div
               style={{
@@ -79,7 +80,7 @@ export function Shop() {
           <section
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
               gap: 14,
             }}
           >

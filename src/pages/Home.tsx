@@ -10,12 +10,18 @@ import afterIllustration from '../assets/after-solution-optimized.jpg'
 import previewCoverPage from '../assets/prev-01-optimized.jpg'
 import previewIntroPage from '../assets/prev-03.png'
 import previewMechanismPage from '../assets/Core_Mechanism_Page (1)_page-0001.jpg'
+import previewPageFour from '../assets/preview 4.png'
+import previewPageFive from '../assets/preview 5.png'
+import bannerImage from '../assets/banner.png'
+import brianTestimonialImage from '../assets/testimonial2.png'
+import aminaTestimonialImage from '../assets/testimonial3.png'
+import faithTestimonialImage from '../assets/testimonial-1.png'
 import ebookCoverAnimation from '../assets/ebook cover animation .mp4'
 
 type PreviewPage = {
   id: string
   page: string
-  label: string
+  label?: string
   title: string
   lead: string
   bullets: string[]
@@ -36,6 +42,16 @@ type ProofCard = {
   timeframe: string
   tool: string
   quote: string
+  avatarSrc?: string
+}
+
+type OfferStackItem = {
+  id: string
+  label: string
+  title: string
+  copy: string
+  imageSrc: string
+  imageAlt: string
 }
 
 const heroBullets = [
@@ -96,58 +112,81 @@ const proofCards: ProofCard[] = [
   {
     id: 'proof-1',
     name: 'Amina',
-    role: 'Freelance designer',
+    role: 'Recent graduate',
     location: 'Nairobi',
-    result: 'Poster + caption offer launched',
-    timeframe: '7-day plan',
-    tool: 'Canva',
+    result: 'CV writing offer launched',
+    timeframe: 'First paid task in 1 week',
+    tool: 'ChatGPT',
     quote:
-      'I stopped "learning forever" and started selling a simple poster + caption package. The templates made delivery fast and my clients loved the consistency.',
+      'I stopped just watching AI videos and started offering CV rewrites. The guide made it easy to package the service and deliver quickly from my phone.',
+    avatarSrc: aminaTestimonialImage,
   },
   {
     id: 'proof-2',
     name: 'Brian',
     role: 'Student',
     location: 'Kisumu',
-    result: 'First paid gig landed',
-    timeframe: 'Within 1 week',
-    tool: 'ChatGPT',
+    result: 'Caption bundle sold',
+    timeframe: 'Within 7 days',
+    tool: 'Canva + ChatGPT',
     quote:
-      'The biggest win was clarity: one offer, one workflow, repeat. I used the scripts to pitch locally and got my first paid gig within a week.',
+      'The caption templates gave me a simple offer I could explain to local businesses fast. I used the workflow exactly as written and got paid for my first bundle that same week.',
+    avatarSrc: brianTestimonialImage,
   },
   {
     id: 'proof-3',
     name: 'Faith',
-    role: 'Social media manager',
+    role: 'Business assistant',
     location: 'Mombasa',
-    result: 'Retainer confidence increased',
-    timeframe: 'After tightening delivery',
-    tool: 'Notion',
+    result: 'Business content package running',
+    timeframe: 'Repeatable weekly workflow',
+    tool: 'ChatGPT',
     quote:
-      'The quality checklist is gold. It helped me produce content that feels premium, faster, without sounding generic. I increased my monthly retainer.',
+      'I now use the system to create simple business content for shops around me. It feels practical, repeatable, and easy to execute without needing a laptop.',
+    avatarSrc: faithTestimonialImage,
   },
 ]
 
-const offerStack = [
+const offerStack: OfferStackItem[] = [
   {
+    id: 'offer-1',
+    label: 'Offer ideas',
     title: 'Proven AI offers you can sell this week',
     copy: 'Start with simple, fixed-price services that make sense to Kenyan buyers immediately.',
+    imageSrc: bannerImage,
+    imageAlt: 'Banner illustration of a clear AI offer packaged for paid client work',
   },
   {
+    id: 'offer-2',
+    label: 'Templates',
     title: 'Ready-to-use templates',
     copy: 'Use plug-and-play prompts, copy structures, and delivery assets instead of starting from zero.',
+    imageSrc: previewCoverPage,
+    imageAlt: 'Guide preview representing ready-to-use templates and delivery assets',
   },
   {
+    id: 'offer-3',
+    label: 'Workflow',
     title: 'Step-by-step delivery workflow',
     copy: 'Follow a practical system from idea to client handoff without guessing what comes next.',
+    imageSrc: previewMechanismPage,
+    imageAlt: 'Preview page showing a step-by-step AI delivery workflow',
   },
   {
+    id: 'offer-4',
+    label: 'Checklist',
     title: 'Quality checklist',
     copy: 'Catch weak outputs before the client sees them so the work feels reliable and premium.',
+    imageSrc: solutionIllustration,
+    imageAlt: 'Illustration representing quality review before client delivery',
   },
   {
+    id: 'offer-5',
+    label: '30-day path',
     title: '30-day path to first income',
     copy: 'Move from setup to outreach to repeatable execution with a plan that is meant to be used.',
+    imageSrc: previewIntroPage,
+    imageAlt: 'Guide preview representing a structured first-income plan',
   },
 ]
 
@@ -155,16 +194,15 @@ const previewPages: PreviewPage[] = [
   {
     id: 'page-1',
     page: '01',
-    label: 'Hook + positioning',
-    title: 'A promise that feels local, immediate, and believable',
-    lead: 'The opening page frames AI income for Kenya without hype and makes the opportunity feel actionable now.',
+    title: 'AI Income in Kenya Starts Here',
+    lead: 'Imagine waking up in Nairobi, Kisumu, or Mombasa and earning money before the day ends using just your phone.',
     bullets: [
-      'Built for Kenyan youth and job seekers',
-      'Phone-first, low-cost, beginner-friendly positioning',
-      'Sets up a clear path to first income',
-      'Makes the guide feel practical before purchase',
+      'No office. No boss. No expensive course.',
+      'Built for Kenyan youth, job seekers, and hustlers',
+      'Works with your phone and internet',
+      'Uses free tools you can access today',
     ],
-    note: 'Preview the hook first so buyers can judge the tone, clarity, and practicality before they commit.',
+    note: 'You do not need more learning. You need a way to start earning.',
     imageSrc: previewCoverPage,
     imageAlt: 'Cover preview for the AI income guide',
     width: 910,
@@ -174,16 +212,15 @@ const previewPages: PreviewPage[] = [
   {
     id: 'page-2',
     page: '02',
-    label: 'Belief shift',
-    title: 'Why this works in Kenya right now',
-    lead: 'The introduction connects M-Pesa, smartphones, English, and local hustle into one believable advantage.',
+    title: 'Why This Works in Kenya Right Now',
+    lead: 'Kenya is already set up for this.',
     bullets: [
-      'Explains why the opportunity fits the market',
-      'Turns vague interest into urgency',
-      'Positions the buyer for action instead of endless learning',
-      'Keeps the message grounded and mobile-first',
+      'M-Pesa, smartphones, English and Swahili, and internet access make this practical now',
+      'AI removes the hardest part: skills and speed',
+      'Write content, design posts, create videos, and deliver services faster',
+      'The opportunity is not coming. It is already here.',
     ],
-    note: 'This page helps the reader believe the system can work for them, not just for people online.',
+    note: 'You do not need years to learn. You can start producing valuable work in hours.',
     imageSrc: previewIntroPage,
     imageAlt: 'Preview page about why AI income is an opportunity in Kenya',
     width: 910,
@@ -193,21 +230,56 @@ const previewPages: PreviewPage[] = [
   {
     id: 'page-3',
     page: '03',
-    label: 'Mechanism',
-    title: 'The simple system behind the offer',
-    lead: 'The mechanism page makes the income path easy to understand: prompt, produce, deliver, get paid.',
+    title: 'The Simple System Behind the Income',
+    lead: 'This is how you turn AI into money: Prompt -> Produce -> Deliver -> Get Paid',
     bullets: [
-      'Shows how the workflow actually works',
-      'Makes the guide feel executable, not theoretical',
-      'Connects AI outputs to sellable services',
-      'Builds confidence before checkout',
+      'Tell AI what to create',
+      'Generate work in minutes',
+      'Package it into a service',
+      'Send to a client and get paid',
     ],
-    note: 'This is where the buyer sees the system clearly enough to picture themselves using it this week.',
+    note: 'You are not selling AI. You are selling results: captions, designs, CVs, and ready-to-use content people will pay for.',
     imageSrc: previewMechanismPage,
     imageAlt: 'Preview page showing the core AI income mechanism',
     width: 1240,
     height: 1755,
     accent: 'ink',
+  },
+  {
+    id: 'page-4',
+    page: '04',
+    title: 'What This Looks Like in Real Life',
+    lead: 'You do not need big skills to start.',
+    bullets: [
+      'Offer CV writing, social media posts, captions for businesses, or simple designs',
+      'Day 1-3: learn the tools',
+      'Day 4-7: send offers',
+      'Week 1: get your first response or client',
+    ],
+    note: 'You are not building a career first. You are getting your first payment first.',
+    imageSrc: previewPageFour,
+    imageAlt: 'Preview page showing what this looks like in real life',
+    width: 1024,
+    height: 1536,
+    accent: 'gold',
+  },
+  {
+    id: 'page-5',
+    page: '05',
+    title: 'Start Before You Feel Ready',
+    lead: 'You do not need a laptop, a degree, or experience.',
+    bullets: [
+      'You need a phone',
+      'You need internet',
+      'You need a decision to start',
+      'Open the guide, pick one offer, and start sending work this week',
+    ],
+    note: 'This works - but only if you execute.',
+    imageSrc: previewPageFive,
+    imageAlt: 'Preview page showing how to start before you feel ready',
+    width: 1024,
+    height: 1536,
+    accent: 'emerald',
   },
 ]
 
@@ -228,6 +300,7 @@ export function Home() {
   const starterPriceLabel = toKesLabel(starterPriceKes)
   const ratingLabel = featuredGuide ? featuredGuide.ratingAvg.toFixed(1) : '4.7'
   const ratingCountLabel = featuredGuide ? featuredGuide.ratingCount.toLocaleString() : '128'
+  const proofUserCountLabel = `${ratingCountLabel}+`
 
   function scrollToSection(id: string) {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -475,25 +548,28 @@ export function Home() {
           <section className="glass">
             <div className={styles.section}>
               <div className={styles.kicker}>Proof</div>
-              <h2 className="h2">Specific wins from Kenyan readers</h2>
-              <p className={styles.subhead}>
-                Proof matters more than theory. These examples make the transformation concrete:
-                clearer offer, faster delivery, stronger client trust.
-              </p>
+              <h2 className="h2">Proof beats theory. This is what people are actually doing:</h2>
 
               <div className={styles.proofStats}>
                 <div className={styles.statCard}>
-                  <div className={styles.statNum}>{ratingLabel}/5</div>
-                  <div className={styles.statLabel}>Average rating for the featured guide.</div>
-                </div>
-                <div className={styles.statCard}>
-                  <div className={styles.statNum}>{ratingCountLabel}</div>
-                  <div className={styles.statLabel}>Catalog ratings giving the offer social proof.</div>
-                </div>
-                <div className={styles.statCard}>
-                  <div className={styles.statNum}>7-day plan</div>
+                  <div className={styles.statNum}>{ratingLabel}/5 rating</div>
                   <div className={styles.statLabel}>
-                    Built to move the buyer from study mode into action fast.
+                    From {proofUserCountLabel} real users who bought and used the guide.
+                  </div>
+                </div>
+                <div className={styles.statCard}>
+                  <div className={styles.statNum}>{proofUserCountLabel} users</div>
+                  <div className={styles.statLabel}>
+                    Already using these methods to offer CV writing, captions, and simple
+                    business content with AI.
+                  </div>
+                </div>
+                <div className={styles.statCard}>
+                  <div className={styles.statNum}>7-day system</div>
+                  <div className={styles.statLabel}>
+                    Go from learning {'->'} offering {'->'} first paid task using a simple,
+                    repeatable
+                    workflow.
                   </div>
                 </div>
               </div>
@@ -502,9 +578,23 @@ export function Home() {
                 {proofCards.map((card) => (
                   <article key={card.id} className={styles.proofCard}>
                     <div className={styles.proofTop}>
-                      <div className={styles.proofAvatar} aria-hidden="true">
-                        {card.name.slice(0, 1)}
-                      </div>
+                      {card.avatarSrc ? (
+                        <img
+                          className={`${styles.proofAvatar} ${styles.proofAvatarImage}`}
+                          src={card.avatarSrc}
+                          alt={`${card.name} testimonial`}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <div
+                          className={styles.proofAvatar}
+                          role="img"
+                          aria-label={`${card.name} testimonial photo placeholder`}
+                        >
+                          <span className={styles.proofAvatarLabel}>Photo</span>
+                        </div>
+                      )}
                       <div>
                         <div className={styles.proofName}>{card.name}</div>
                         <div className={styles.proofMeta}>
@@ -523,11 +613,16 @@ export function Home() {
                   </article>
                 ))}
               </div>
+
+              <p className={styles.proofNote}>
+                No theory. No fluff. Just practical steps you can execute immediately using your
+                phone.
+              </p>
             </div>
           </section>
 
           <section className="glass">
-            <div className={styles.section}>
+            <div className={`${styles.section} ${styles.offerSection}`}>
               <div className={styles.kicker}>What You Get</div>
               <h2 className="h2">Everything you need to start earning - no extra tools required</h2>
               <p className={styles.subhead}>
@@ -535,11 +630,35 @@ export function Home() {
                 an offer, deliver with confidence, and start selling fast.
               </p>
 
-              <div className={styles.offerGrid}>
-                {offerStack.map((item) => (
-                  <article key={item.title} className={styles.offerCard}>
-                    <h3 className={styles.offerTitle}>{item.title}</h3>
-                    <p className={styles.offerCopy}>{item.copy}</p>
+              <div className={styles.offerFeatureList}>
+                {offerStack.map((item, index) => (
+                  <article
+                    key={item.id}
+                    className={`${styles.offerFeature} ${
+                      index % 2 === 1 ? styles.offerFeatureReverse : ''
+                    }`}
+                  >
+                    <div className={styles.offerFeatureMedia}>
+                      <img
+                        className={styles.offerFeatureImage}
+                        src={item.imageSrc}
+                        alt={item.imageAlt}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+
+                    <div className={styles.offerFeatureContent}>
+                      <div className={styles.offerFeatureMeta}>
+                        <span className={styles.offerFeatureNumber}>
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <span className={styles.offerFeatureLabel}>{item.label}</span>
+                      </div>
+
+                      <h3 className={styles.offerFeatureTitle}>{item.title}</h3>
+                      <p className={styles.offerFeatureCopy}>{item.copy}</p>
+                    </div>
                   </article>
                 ))}
               </div>
@@ -564,8 +683,8 @@ export function Home() {
                 <div className={styles.kicker}>Preview Pages</div>
                 <h2 className="h2">See inside before you buy</h2>
                 <p className={styles.subhead}>
-                  The preview pages stay because they help conversion. They show the buyer the tone,
-                  clarity, and mechanism before checkout.
+                  See exactly how the guide helps you start, why it works in Kenya, and what path
+                  to follow to turn AI into paid offers.
                 </p>
               </div>
 
@@ -600,7 +719,9 @@ export function Home() {
                       <div className={styles.whatYouGetContent}>
                         <div className={styles.whatYouGetMeta}>
                           <span className={styles.whatYouGetPage}>Page {page.page}</span>
-                          <span className={styles.whatYouGetLabel}>{page.label}</span>
+                          {page.label ? (
+                            <span className={styles.whatYouGetLabel}>{page.label}</span>
+                          ) : null}
                         </div>
 
                         <div className={styles.whatYouGetHeading}>
